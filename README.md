@@ -1,66 +1,102 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# lara_shop_10
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# 概要
 
-## About Laravel
+Laravel を用いた、簡易な EC サイトである。デプロイは行わない。
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# 使用技術
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   フロントエンド
+    -   HTML
+    -   CSS
+        -   TailwindCSS 3.1.0
+-   バックエンド
+    -   PHP 8.1 以上
+        -   Laravel 10
+-   その他
+    -   MAMP または XAMPP
+    -   Visual Studio Code
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# 機能一覧
 
-## Learning Laravel
+-   商品関連
+    -   商品一覧
+        -   カテゴリー検索（野菜、飲料、果物という 3 つのカテゴリーで絞り込みが可能。）
+        -   キーワード検索（入力されたキーワードをもとに、商品名及び商品の詳細情報から部分一致検索を行う。）
+    -   商品詳細
+-   カート関連
+    -   カートに入れる
+    -   カートを見る
+    -   カート内の商品を削除（論理削除（ソフトデリート）。）
+-   認証関連
+    -   アカウント登録
+    -   ログイン
+    -   ログアウト
+    -   プロフィール
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# 環境構築
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## GitHub からダウンロードする場合
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-   `git clone https://github.com/yuuhei-koutoku/lara_shop_10.git`で GitHub からソースコードをダウンロードする。
+-   `cd lara_shop_10`
+-   `composer install` または `composer update` （プロジェクトの依存関係を`composer.lock`に基づいてインストールまたは更新する。）
+-   `npm install` （`package.json`ファイルに基づいてプロジェクトのフロントエンド依存関係をインストールする。）
+-   `cp .env.example .env` （`.env.example`をコピーして`.env`を作成する。）
+-   .env の下記の内容を、自身の環境に合わせて変更する。
+    ```
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306 または 8889
+    DB_DATABASE=
+    DB_USERNAME=
+    DB_PASSWORD=
+    ```
+-   XAMPP または MAMP でデータベースを起動した後に、`php artisan migrate:fresh --seed`を実行する。（データベースにテーブルとダミーデータが追加されれば OK。）
+-   `php artisan key:generate`を実行してキーを生成する。
+-   `php artisan serve` と `npm run dev` で簡易サーバーを立ち上げ、表示確認をする。
 
-## Laravel Sponsors
+## 圧縮ファイルからダウンロードする場合
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+-   圧縮ファイルをダウンロードする。
+-   圧縮ファイルを解凍する。
+-   解凍したファイルを XAMPP または MAMP の htdocs 直下に配置する。
+-   圧縮ファイルを削除する。
+-   `cd path/to/lara_shop_10` （プロジェクトのルートディレクトリに移動する。）
+-   `composer update` （`composer.json`に記載された依存関係を最新のバージョンにアップデートし、`composer.lock`ファイルを更新する。）
+-   `npm update` （`package.json`に記載されたフロントエンド依存関係を最新のバージョンにアップデートする。）
+-   .env の下記の内容を、自身の環境に合わせて変更する。
+    ```
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306 または 8889
+    DB_DATABASE=
+    DB_USERNAME=
+    DB_PASSWORD=
+    ```
+-   XAMPP または MAMP でデータベースを起動した後に、`php artisan migrate:fresh --seed`を実行する。（データベースにテーブルとダミーデータが追加されれば OK。）
+-   `php artisan serve` と `npm run dev` で簡易サーバーを立ち上げ、表示確認をする。
 
-### Premium Partners
+### トラブルシューティング
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+-   `composer update` が失敗する場合
 
-## Contributing
+    -   `composer -V` （composer が正しくインストールされていることを確認する。）
+        -   バージョンが確認できない場合は、composer がインストールされていない、もしくはパスが通っていない恐れがある。
+    -   `cd path/to/lara_shop_10` （プロジェクトのルートディレクトリに移動する。）
+    -   `rm -rf vendor` （`vendor`を削除する。）
+    -   `rm composer.lock` （`composer.lock`を削除する。）
+    -   `composer install` （`composer.json`で指定された依存関係をインストールする。）
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+-   `npm update` が失敗する場合
+    -   `npm -v` （npm が正しくインストールされていることを確認する。）
+        -   バージョンが確認できない場合は、npm がインストールされていない、もしくはパスが通っていない恐れがある。
+    -   `cd path/to/lara_shop_10` （プロジェクトのルートディレクトリに移動する。）
+    -   `rm -rf node_modules` （`node_modules`を削除する。）
+    -   `rm package-lock.json` （`package-lock.json`を削除する。）
+    -   `npm install` （`package.json`で指定された依存関係をインストールする。）
+    -   `npm run dev` （フロントエンドのアセット(JavaScript, CSS 等)を開発モードでコンパイル(変換)する。）
 
-## Code of Conduct
+# ER 図
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<img src="public/images/database/lara_shop_database.png" width="100%">
