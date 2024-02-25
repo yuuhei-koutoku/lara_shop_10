@@ -4,6 +4,20 @@
 
 Laravel を用いた、簡易な EC サイトである。デプロイは行わない。
 
+# 使用画面イメージ
+
+## 商品一覧
+
+<img src="public/images/readme/lara_shop_10_1.png" width="100%">
+
+## 商品詳細
+
+<img src="public/images/readme/lara_shop_10_2.png" width="100%">
+
+## カート
+
+<img src="public/images/readme/lara_shop_10_3.png" width="100%">
+
 # 使用技術
 
 -   フロントエンド
@@ -99,4 +113,4 @@ Laravel を用いた、簡易な EC サイトである。デプロイは行わ�
 
 # ER 図
 
-<img src="public/images/database/lara_shop_database.png" width="100%">
+<img src="public/images/readme/lara_shop_database.png" width="100%">
